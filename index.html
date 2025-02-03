@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Viewer</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJxvHQ6vYIK+KCh7U5PpPpNVl4poI7vLyz5HCBtL8yFjjKkA5fGwrzjmj7df" crossorigin="anonymous">
+  
+  <!-- jQuery for Animations (Optional) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Custom styles for fullscreen and button -->
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    .fullscreen-container {
+      text-align: center;
+    }
+    #pdfFrame {
+      width: 100%;
+      height: 80vh;
+      display: none;
+    }
+    .btn-custom {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fullscreen-container">
+    <!-- Button to open PDF -->
+    <button class="btn-custom" id="openPdfBtn">Orikkal Koodi</button>
+    
+    <!-- PDF iframe (hidden initially) -->
+    <iframe id="pdfFrame" src="/file/ഒരിക്കൽ കൂടി.pdf" frameborder="0"></iframe>
+  </div>
+
+  <!-- Bootstrap and JS libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Button click event
+    document.getElementById("openPdfBtn").addEventListener("click", function() {
+      // Animate the button
+      $('#openPdfBtn').fadeOut(500); // Fade out button
+      
+      // Show the PDF in the iframe after a slight delay for animation
+      setTimeout(function() {
+        var pdfUrl = "https://example.com/your-pdf-file.pdf"; // Replace this URL with your actual PDF file URL
+        var pdfFrame = document.getElementById("pdfFrame");
+        pdfFrame.src = pdfUrl; // Set PDF URL to iframe
+        pdfFrame.style.display = "block"; // Show the iframe
+        pdfFrame.classList.add("fade-in"); // Add fade-in animation class (Bootstrap or custom)
+      }, 500);
+    });
+  </script>
+
+  <!-- Optional: Add fade-in CSS animation if you want to enhance the transition -->
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+</body>
+</html>
